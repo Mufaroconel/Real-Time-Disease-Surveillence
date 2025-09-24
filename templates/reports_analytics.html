@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    body {
+        background-color: #f8fafc;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .main-container {
+        max-width: 800px;
+        margin: 30px auto;
+        padding: 30px;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .page-title {
+        background-color: #3a86ff;
+        color: white;
+        font-weight: 600;
+        font-size: 1.4rem;
+        border-radius: 12px 12px 0 0 !important;
+        padding: 20px;
+        text-align: center;
+    }
+    .page-title {
+        color: #2b2d42;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    .report-form {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    .form-label {
+        font-weight: 600;
+        color: #2b2d42;
+        font-size: 1rem;
+    }
+    .form-select, .form-checkbox {
+        padding: 12px 15px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        font-size: 1rem;
+        background-color: white;
+        transition: all 0.3s;
+    }
+    .form-select:focus {
+        border-color: #3a86ff;
+        box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.2);
+        outline: none;
+    }
+    .checkbox-group {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 10px;
+    }
+    .checkbox-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .checkbox-item input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        accent-color: #3a86ff;
+    }
+    .submit-btn {
+        background-color:rgb(5, 65, 30);
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s;
+        margin-top: 15px;
+        align-self: flex-start;
+    }
+    .submit-btn:hover {
+        background-color:rgb(60, 185, 165);
+        transform: translateY(-2px);
+    }
+    .section-title {
+        font-weight: 600;
+        color: #2b2d42;
+        margin: 25px 0 10px;
+        font-size: 1.1rem;
+    }
+    .date-range {
+        display: flex;
+        gap: 15px;
+    }
+    .date-range input {
+        flex: 1;
+        padding: 10px 15px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+    }
+    @media (max-width: 768px) {
+        .main-container {
+            padding: 20px;
+            margin: 15px;
+        }
+        .date-range {
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+</style>
+
+<div class="main-container">
+    <h1 class="page-title">Reports</h1>
+    
+    <form method="POST" action="/reports-analytics" class="report-form">
+        <!-- Date Range Selection -->
+        <div class="form-group">
+            <label class="form-label">Date Range</label>
+            <div class="date-range">
+                <input type="date" name="start_date" class="form-select" required>
+                <input type="date" name="end_date" class="form-select" required>
+            </div>
+        </div>
+
+        <!-- Occasion Selection -->
+        <div class="form-group">
+            <label for="occasion" class="form-label">Occasion Type</label>
+            <select name="occasion" id="occasion" class="form-select" required>
+                <option value="all">All Cases</option>
+                <option value="Newly detected">Newly Detected Cases</option>
+                <option value="Review">Review Cases</option>
+            </select>
+        </div>
+
+        <!-- Report Sections Selection -->
+        <div class="form-group">
+            <label class="form-label">Report Sections</label>
+            <div class="checkbox-group">
+                <!--div class="checkbox-item">
+                    <input type="checkbox" id="summary" name="sections" value="summary" checked>
+                    <label for="summary">Executive Summary</label>
+                </div-->
+                <div class="checkbox-item">
+                    <input type="checkbox" id="trends" name="sections" value="trends" checked>
+                    <label for="trends">Disease Trends</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="hospitals" name="sections" value="hospitals" checked>
+                    <label for="hospitals">Hospital Statistics</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="demographics" name="sections" value="demographics">
+                    <label for="demographics">Patient Demographics</label>
+                </div>
+                <!--div class="checkbox-item">
+                    <input type="checkbox" id="risk" name="sections" value="risk">
+                    <label for="risk">Risk Analysis</label>
+                </div-->
+            </div>
+        </div>
+
+        <!-- Format Selection -->
+        <div class="form-group">
+            <label for="format" class="form-label">Report Format</label>
+            <select name="format" id="format" class="form-select" required>
+                <option value="excel">Excel Spreadsheet (.xlsx)</option>
+                <option value="pdf">PDF Document (.pdf)</option>
+                
+            </select>
+        </div>
+
+        <button type="submit" class="submit-btn">
+            <i class="fas fa-download"></i> Generate Report
+        </button>
+    </form>
+</div>
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        const endDate = new Date();
+        const startDate = new Date();
+        startDate.setDate(endDate.getDate() - 7);
+        
+        document.querySelector('input[name="end_date"]').valueAsDate = endDate;
+        document.querySelector('input[name="start_date"]').valueAsDate = startDate;
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Digital Footprint Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color:rgb(255, 255, 255);
+            margin: 0;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            border: 2px solid rgb(94, 94, 97);
+            text-align: center;
+            position: relative;
+        }
+        .logo {
+            width: 80px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        input[type="text"], 
+        input[type="email"], 
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        button {
+            background-color: rgb(91, 91, 92);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            position: relative;
+        }
+        button:hover {
+            background-color: rgb(43, 44, 44);
+        }
+        .message {
+            color: red;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+            text-align: left;
+            margin-top: -5px;
+            margin-bottom: 5px;
+        }
+        p {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+        a {
+            color: #6a0dad;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Loading overlay styles */
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            z-index: 10;
+        }
+        
+        .loading-spinner {
+            border: 4px solid rgba(101, 167, 211, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid rgb(101, 167, 211);
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        
+        .loading-text {
+            margin-top: 10px;
+            color: #6a0dad;
+            font-weight: bold;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <form method="POST" action="{{ url_for('register') }}" id="registerForm">
+        {{ form.hidden_tag() }}
+        <img src="{{ url_for('static', filename='images/reg.jpeg') }}" alt="Logo" class="logo">
+        <h2>Register</h2>
+        
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="message {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <!-- Email Field -->
+        {{ form.email.label(style="display:none") }}
+        {{ form.email(class="form-control", placeholder="Email") }}
+        {% for error in form.email.errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
+        
+        <!-- Username Field -->
+        {{ form.username.label(style="display:none") }}
+        {{ form.username(class="form-control", placeholder="Username") }}
+        {% for error in form.username.errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
+        
+        <!-- Password Field -->
+        {{ form.password.label(style="display:none") }}
+        {{ form.password(class="form-control", placeholder="Password") }}
+        {% for error in form.password.errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
+        
+        <!-- Confirm Password Field -->
+        {{ form.confirm_password.label(style="display:none") }}
+        {{ form.confirm_password(class="form-control", placeholder="Confirm Password") }}
+        {% for error in form.confirm_password.errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
+        
+        <button type="submit" id="registerBtn">Register</button>
+        <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+        
+        <!-- Loading overlay -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div style="text-align: center;">
+                <div class="loading-spinner"></div>
+                <div class="loading-text">Creating account...</div>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            // Show loading overlay
+            document.getElementById('loadingOverlay').style.display = 'flex';
+            
+            // Disable the register button to prevent multiple submissions
+            document.getElementById('registerBtn').disabled = true;
+            
+            // Form will continue submitting in the background
+        });
+    </script>
+</body>
+</html>

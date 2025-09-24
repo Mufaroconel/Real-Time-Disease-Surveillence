@@ -1,0 +1,388 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    body {
+        background-color: #f8f9fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .main-container {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        margin: 40px auto;
+        max-width: 900px;
+    }
+    .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .card-header {
+        background-color: rgb(24, 93, 243);
+        color: white;
+        font-weight: bold;
+        font-size: 1.3rem;
+        border-radius: 10px 10px 0 0 !important;
+        padding: 20px;
+        text-align: center;
+    }
+    .card-body {
+        padding: 30px;
+    }
+    .table-container {
+        overflow-x: auto;
+        margin: 30px 0;
+    }
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .table th {
+        background-color: #f8f9fa;
+        color: #495057;
+        font-weight: 600;
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 2px solid #dee2e6;
+    }
+    .table td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #dee2e6;
+        vertical-align: middle;
+    }
+    .table tr:last-child td {
+        border-bottom: none;
+    }
+    .table tr:hover {
+        background-color: #f8f9fa;
+    }
+    .risk-high {
+        color: #dc3545;
+        font-weight: 600;
+    }
+    .risk-medium {
+        color: #ffc107;
+        font-weight: 600;
+    }
+    .risk-low {
+        color: #28a745;
+        font-weight: 600;
+    }
+    .count-badge {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 20px;
+        background-color: #e9ecef;
+        color: #495057;
+        font-weight: 600;
+        min-width: 40px;
+        text-align: center;
+    }
+    .chart-container {
+        position: relative;
+        height: 400px;
+        margin-bottom: 30px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+    .chart-title {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #495057;
+        font-weight: 600;
+    }
+    .chart-actions {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+    .chart-btn {
+        background-color: #4e73df;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .chart-btn:hover {
+        background-color: #2e59d9;
+        transform: translateY(-2px);
+    }
+    .download-section {
+        background-color:rgb(170, 203, 236);
+        padding: 25px;
+        border-radius: 8px;
+        margin-top: 40px;
+        text-align: center;
+        border: 1px dashed #dee2e6;
+    }
+    .download-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #495057;
+    }
+    .download-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    .form-group {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .form-label {
+        font-weight: 600;
+        color: #495057;
+    }
+    .form-select {
+        padding: 8px 15px;
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+    @media (max-width: 768px) {
+        .main-container {
+            padding: 25px;
+            margin: 20px auto;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .table th, .table td {
+            padding: 8px 10px;
+        }
+        .chart-container {
+            height: 300px;
+        }
+        .form-group {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+</style>
+
+<div class="main-container">
+    <div class="card">
+        <div class="card-header">
+            Prediction Trends Analysis
+        </div>
+        <div class="card-body">
+            <!-- Graph Section at the Top -->
+            <div class="chart-container">
+                <h3 class="chart-title">Disease Prediction Trends</h3>
+                <canvas id="trendChart"></canvas>
+                <div class="chart-actions">
+                    <button class="chart-btn" id="toggleHigh">
+                        <i class="fas fa-filter"></i> Toggle High Risk
+                    </button>
+                    <button class="chart-btn" id="toggleMedium">
+                        <i class="fas fa-filter"></i> Toggle Medium Risk
+                    </button>
+                    <button class="chart-btn" id="toggleLow">
+                        <i class="fas fa-filter"></i> Toggle Low Risk
+                    </button>
+                </div>
+            </div>
+
+            <!-- Table Section -->
+            <div class="table-container">
+                <h3 class="chart-title">Prediction Results</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Disease Name</th>
+                            <th>Cases Count</th>
+                            <th>Risk Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for result in results %}
+                        <tr>
+                            <td>{{ result.Disease_Name }}</td>
+                            <td>
+                                <span class="count-badge">{{ result.Count }}</span>
+                            </td>
+                            <td>
+                                {% if result.Risk_Status == 'High' %}
+                                    <span class="risk-high">{{ result.Risk_Status }}</span>
+                                {% elif result.Risk_Status == 'Medium' %}
+                                    <span class="risk-medium">{{ result.Risk_Status }}</span>
+                                {% else %}
+                                    <span class="risk-low">{{ result.Risk_Status }}</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Download Section -->
+            <div class="download-section">
+                <h3 class="download-title">Download Prediction Report</h3>
+                <form method="POST" action="/prediction-trends" class="download-form">
+                    <div class="form-group">
+                        <label for="format" class="form-label">Select Format:</label>
+                        <select name="format" id="format" class="form-select" required>
+                            <option value="excel">Excel (.xlsx)</option>
+                            <option value="pdf">PDF (.pdf)</option>
+                            
+                        </select>
+                    </div>
+                    <button type="submit" class="chart-btn">
+                        <i class="fas fa-download"></i> Download Report
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Include Chart.js and Font Awesome -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Prepare data for the chart
+        const diseases = [
+            {% for result in results %}
+                "{{ result.Disease_Name }}",
+            {% endfor %}
+        ];
+        
+        const counts = [
+            {% for result in results %}
+                {{ result.Count }},
+            {% endfor %}
+        ];
+        
+        const riskLevels = [
+            {% for result in results %}
+                "{{ result.Risk_Status }}",
+            {% endfor %}
+        ];
+        
+        // Create color array based on risk levels
+        const backgroundColors = riskLevels.map(risk => {
+            if (risk === 'High') return 'rgba(220, 53, 69, 0.7)';
+            if (risk === 'Medium') return 'rgba(255, 193, 7, 0.7)';
+            return 'rgba(40, 167, 69, 0.7)';
+        });
+        
+        const borderColors = riskLevels.map(risk => {
+            if (risk === 'High') return 'rgba(220, 53, 69, 1)';
+            if (risk === 'Medium') return 'rgba(255, 193, 7, 1)';
+            return 'rgba(40, 167, 69, 1)';
+        });
+        
+        // Create the chart
+        const ctx = document.getElementById('trendChart').getContext('2d');
+        const trendChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: diseases,
+                datasets: [{
+                    label: 'Case Count',
+                    data: counts,
+                    backgroundColor: backgroundColors,
+                    borderColor: borderColors,
+                    borderWidth: 2,
+                    tension: 0.3,
+                    fill: false,
+                    pointRadius: 6,
+                    pointHoverRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `Cases: ${context.raw} (${riskLevels[context.dataIndex]} Risk)`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Number of Cases'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Disease Name'
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Toggle buttons functionality
+        const toggleHighBtn = document.getElementById('toggleHigh');
+        const toggleMediumBtn = document.getElementById('toggleMedium');
+        const toggleLowBtn = document.getElementById('toggleLow');
+        
+        // Initialize visibility
+        let showHigh = true, showMedium = true, showLow = true;
+        
+        // Toggle functions
+        function updateChart() {
+            const newData = counts.map((count, i) => {
+                const risk = riskLevels[i];
+                if ((risk === 'High' && !showHigh) || 
+                    (risk === 'Medium' && !showMedium) || 
+                    (risk === 'Low' && !showLow)) {
+                    return null;
+                }
+                return count;
+            });
+            
+            trendChart.data.datasets[0].data = newData;
+            trendChart.update();
+        }
+        
+        toggleHighBtn.addEventListener('click', function() {
+            showHigh = !showHigh;
+            this.style.backgroundColor = showHigh ? '#4e73df' : '#6c757d';
+            updateChart();
+        });
+        
+        toggleMediumBtn.addEventListener('click', function() {
+            showMedium = !showMedium;
+            this.style.backgroundColor = showMedium ? '#4e73df' : '#6c757d';
+            updateChart();
+        });
+        
+        toggleLowBtn.addEventListener('click', function() {
+            showLow = !showLow;
+            this.style.backgroundColor = showLow ? '#4e73df' : '#6c757d';
+            updateChart();
+        });
+    });
+</script>
+{% endblock %}

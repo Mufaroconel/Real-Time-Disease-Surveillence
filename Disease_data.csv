@@ -1,0 +1,501 @@
+Patient Age,Disease Name,Occasion,Date,Hospital Name
+71,Salmonellosis,Newly detected,2/25/2025,Midlands Private Hospital
+62,Polio,Review,5/19/2025,Gweru Provincial Hospital
+83,Pyraemia/Septicaemia,Review,1/31/2025,Gweru Provincial Hospital
+35,Typhoid Fever,Newly detected,3/27/2025,Midlands Private Hospital
+54,Malaria,Newly detected,4/24/2025,Gweru Provincial Hospital
+31,Cryptosporidiosis,Newly detected,1/20/2025,Gweru Provincial Hospital
+52,Erysipelas,Review,5/18/2025,Clay Bank Hospital
+35,Malaria,Newly detected,4/23/2025,Midlands Private Hospital
+73,Infectious Hepatitis C,Review,5/9/2025,Midlands Private Hospital
+78,Acute Respiratory Infections,Review,4/29/2025,Clay Bank Hospital
+19,Acute Respiratory Infections,Newly detected,2/5/2025,Midlands Private Hospital
+49,HIV/AIDS,Review,4/18/2025,Midlands Private Hospital
+67,Malaria,Newly detected,1/9/2025,Midlands Private Hospital
+24,Acute Respiratory Infections,Review,4/28/2025,Midlands Private Hospital
+42,Leptospirosis,Newly detected,5/4/2025,Gweru Provincial Hospital
+20,Pyraemia/Septicaemia,Newly detected,2/22/2025,Clay Bank Hospital
+8,Pyraemia/Septicaemia,Newly detected,3/3/2025,Midlands Private Hospital
+35,Pneumonia,Newly detected,3/15/2025,Clay Bank Hospital
+57,Diphtheria,Review,4/15/2025,Clay Bank Hospital
+85,Cholera,Review,1/22/2025,Clay Bank Hospital
+81,Salmonellosis,Review,2/9/2025,Midlands Private Hospital
+29,Diphtheria,Newly detected,5/6/2025,Clay Bank Hospital
+72,Influenza,Review,5/3/2025,Midlands Private Hospital
+80,Malaria,Review,5/22/2025,Clay Bank Hospital
+73,Cryptosporidiosis,Review,5/6/2025,Gweru Provincial Hospital
+20,Pneumonia,Review,4/7/2025,Gweru Provincial Hospital
+63,Tuberculosis,Newly detected,5/3/2025,Midlands Private Hospital
+24,Tetanus,Review,5/21/2025,Midlands Private Hospital
+8,Salmonellosis,Review,4/25/2025,Clay Bank Hospital
+26,Erysipelas,Newly detected,4/13/2025,Gweru Provincial Hospital
+42,Pertussis,Newly detected,1/1/2025,Clay Bank Hospital
+18,Syphilis,Newly detected,3/30/2025,Midlands Private Hospital
+75,Cholera,Newly detected,1/16/2025,Midlands Private Hospital
+54,Salmonellosis,Newly detected,3/19/2025,Midlands Private Hospital
+43,Infectious Hepatitis B,Review,2/8/2025,Midlands Private Hospital
+45,Rabies,Review,4/2/2025,Gweru Provincial Hospital
+79,Pneumonia,Newly detected,5/23/2025,Gweru Provincial Hospital
+39,Typhoid Fever,Newly detected,1/9/2025,Gweru Provincial Hospital
+54,Polio,Newly detected,1/3/2025,Clay Bank Hospital
+5,Meningitis,Review,3/28/2025,Gweru Provincial Hospital
+30,Cholera,Review,2/6/2025,Clay Bank Hospital
+15,Pyraemia/Septicaemia,Newly detected,3/18/2025,Clay Bank Hospital
+20,Cholera,Review,3/15/2025,Gweru Provincial Hospital
+35,Typhoid Fever,Review,1/1/2025,Midlands Private Hospital
+24,Diphtheria,Review,5/15/2025,Clay Bank Hospital
+78,Influenza,Review,5/1/2025,Midlands Private Hospital
+31,Plague,Review,2/28/2025,Midlands Private Hospital
+54,Infectious Hepatitis C,Newly detected,2/19/2025,Clay Bank Hospital
+54,Erysipelas,Review,1/24/2025,Gweru Provincial Hospital
+64,Plague,Review,2/3/2025,Gweru Provincial Hospital
+34,HIV/AIDS,Review,1/17/2025,Midlands Private Hospital
+39,Tetanus,Review,1/15/2025,Gweru Provincial Hospital
+8,Tuberculosis,Review,3/11/2025,Gweru Provincial Hospital
+78,Infectious Hepatitis A,Newly detected,3/18/2025,Clay Bank Hospital
+42,Tetanus,Review,1/24/2025,Clay Bank Hospital
+54,HIV/AIDS,Newly detected,2/18/2025,Gweru Provincial Hospital
+54,Infectious Hepatitis C,Review,1/8/2025,Midlands Private Hospital
+68,Pertussis,Newly detected,3/2/2025,Clay Bank Hospital
+65,Brucellosis,Review,3/19/2025,Midlands Private Hospital
+16,Cryptosporidiosis,Newly detected,5/23/2025,Midlands Private Hospital
+15,Scarlet Fever,Newly detected,2/15/2025,Midlands Private Hospital
+46,Tetanus,Review,2/28/2025,Gweru Provincial Hospital
+82,Pyraemia/Septicaemia,Review,4/12/2025,Gweru Provincial Hospital
+61,Anthrax,Review,3/21/2025,Clay Bank Hospital
+40,Infectious Hepatitis C,Newly detected,1/17/2025,Midlands Private Hospital
+71,Infectious Hepatitis C,Review,3/16/2025,Midlands Private Hospital
+47,Typhoid Fever,Review,1/12/2025,Midlands Private Hospital
+26,Acute Respiratory Infections,Review,3/25/2025,Gweru Provincial Hospital
+78,Infectious Hepatitis B,Review,2/28/2025,Midlands Private Hospital
+50,Pertussis,Newly detected,1/14/2025,Gweru Provincial Hospital
+53,Cryptosporidiosis,Newly detected,1/7/2025,Midlands Private Hospital
+56,Acute Respiratory Infections,Review,3/6/2025,Clay Bank Hospital
+66,Diphtheria,Review,4/28/2025,Clay Bank Hospital
+80,Scarlet Fever,Newly detected,3/27/2025,Clay Bank Hospital
+41,Tuberculosis,Review,5/11/2025,Clay Bank Hospital
+47,Rabies,Review,4/16/2025,Gweru Provincial Hospital
+39,Sleeping Sickness,Review,1/7/2025,Midlands Private Hospital
+6,Salmonellosis,Newly detected,3/3/2025,Gweru Provincial Hospital
+64,Chlamydia,Newly detected,1/21/2025,Gweru Provincial Hospital
+64,Tetanus,Review,2/27/2025,Midlands Private Hospital
+11,Diphtheria,Review,2/27/2025,Midlands Private Hospital
+35,Sleeping Sickness,Review,2/21/2025,Midlands Private Hospital
+51,Syphilis,Review,1/19/2025,Midlands Private Hospital
+56,Cholera,Review,1/26/2025,Gweru Provincial Hospital
+62,Malaria,Newly detected,4/13/2025,Midlands Private Hospital
+52,Scarlet Fever,Newly detected,3/29/2025,Gweru Provincial Hospital
+71,Diphtheria,Newly detected,5/21/2025,Midlands Private Hospital
+19,Erysipelas,Review,5/22/2025,Midlands Private Hospital
+71,Giardiasis,Review,1/26/2025,Midlands Private Hospital
+40,Measles,Review,2/8/2025,Midlands Private Hospital
+18,Anthrax,Review,5/15/2025,Gweru Provincial Hospital
+72,Pneumonia,Review,5/15/2025,Midlands Private Hospital
+55,Malaria,Review,5/13/2025,Midlands Private Hospital
+31,Meningitis,Review,4/28/2025,Midlands Private Hospital
+55,Meningitis,Review,3/9/2025,Gweru Provincial Hospital
+76,Diphtheria,Review,5/19/2025,Gweru Provincial Hospital
+71,Rabies,Newly detected,4/30/2025,Gweru Provincial Hospital
+25,Scarlet Fever,Newly detected,3/15/2025,Clay Bank Hospital
+18,Polio,Newly detected,5/8/2025,Clay Bank Hospital
+6,Pertussis,Newly detected,3/21/2025,Clay Bank Hospital
+7,Malaria,Review,5/21/2025,Midlands Private Hospital
+51,Pyraemia/Septicaemia,Newly detected,1/13/2025,Midlands Private Hospital
+5,Acute Respiratory Infections,Newly detected,1/24/2025,Clay Bank Hospital
+18,Polio,Newly detected,1/20/2025,Midlands Private Hospital
+67,Infectious Hepatitis C,Review,2/5/2025,Clay Bank Hospital
+71,Pyraemia/Septicaemia,Newly detected,2/12/2025,Clay Bank Hospital
+60,Tetanus,Newly detected,5/19/2025,Clay Bank Hospital
+45,Measles,Review,3/19/2025,Gweru Provincial Hospital
+27,Infectious Hepatitis C,Review,5/16/2025,Clay Bank Hospital
+57,Leptospirosis,Newly detected,3/2/2025,Midlands Private Hospital
+37,Syphilis,Review,4/19/2025,Clay Bank Hospital
+51,Syphilis,Newly detected,4/28/2025,Clay Bank Hospital
+58,Infectious Hepatitis B,Review,3/11/2025,Midlands Private Hospital
+46,Leptospirosis,Review,1/23/2025,Gweru Provincial Hospital
+60,Infectious Hepatitis C,Review,3/5/2025,Clay Bank Hospital
+85,Pneumonia,Newly detected,2/25/2025,Gweru Provincial Hospital
+56,Plague,Newly detected,4/27/2025,Clay Bank Hospital
+39,Acute Respiratory Infections,Review,3/24/2025,Midlands Private Hospital
+7,Malaria,Newly detected,5/22/2025,Gweru Provincial Hospital
+63,Plague,Newly detected,4/7/2025,Midlands Private Hospital
+24,Brucellosis,Review,2/27/2025,Clay Bank Hospital
+56,Infectious Hepatitis C,Newly detected,2/12/2025,Gweru Provincial Hospital
+60,Infectious Hepatitis C,Newly detected,4/8/2025,Clay Bank Hospital
+60,Typhoid Fever,Review,5/12/2025,Midlands Private Hospital
+70,Salmonellosis,Newly detected,2/12/2025,Clay Bank Hospital
+60,Cryptosporidiosis,Review,4/6/2025,Gweru Provincial Hospital
+71,Pneumonia,Review,4/8/2025,Midlands Private Hospital
+42,Typhus Fever,Review,3/30/2025,Gweru Provincial Hospital
+78,Syphilis,Review,2/19/2025,Midlands Private Hospital
+43,Erysipelas,Review,3/13/2025,Clay Bank Hospital
+31,Plague,Newly detected,4/23/2025,Midlands Private Hospital
+71,Chlamydia,Review,1/26/2025,Gweru Provincial Hospital
+51,Cryptosporidiosis,Newly detected,2/15/2025,Midlands Private Hospital
+72,Sleeping Sickness,Review,5/2/2025,Midlands Private Hospital
+70,Pertussis,Review,1/23/2025,Midlands Private Hospital
+12,Infectious Hepatitis A,Review,5/16/2025,Midlands Private Hospital
+85,Measles,Newly detected,2/25/2025,Gweru Provincial Hospital
+6,Polio,Review,5/23/2025,Clay Bank Hospital
+73,Acute Respiratory Infections,Newly detected,1/29/2025,Midlands Private Hospital
+60,Tuberculosis,Review,2/28/2025,Gweru Provincial Hospital
+29,HIV/AIDS,Review,2/23/2025,Midlands Private Hospital
+26,Cholera,Newly detected,2/4/2025,Midlands Private Hospital
+35,Rabies,Newly detected,4/13/2025,Midlands Private Hospital
+43,Pneumonia,Review,1/19/2025,Gweru Provincial Hospital
+24,Polio,Review,2/19/2025,Gweru Provincial Hospital
+62,Acute Respiratory Infections,Newly detected,1/3/2025,Gweru Provincial Hospital
+54,Pyraemia/Septicaemia,Review,4/20/2025,Midlands Private Hospital
+36,Infectious Hepatitis A,Review,4/28/2025,Clay Bank Hospital
+12,Pneumonia,Newly detected,2/2/2025,Gweru Provincial Hospital
+14,Sleeping Sickness,Review,1/7/2025,Clay Bank Hospital
+77,Giardiasis,Newly detected,2/1/2025,Clay Bank Hospital
+52,Plague,Review,3/11/2025,Gweru Provincial Hospital
+8,Cholera,Review,1/18/2025,Clay Bank Hospital
+42,Pneumonia,Review,3/12/2025,Clay Bank Hospital
+76,Cryptosporidiosis,Review,1/19/2025,Clay Bank Hospital
+46,Measles,Review,2/9/2025,Gweru Provincial Hospital
+35,Typhoid Fever,Review,4/14/2025,Gweru Provincial Hospital
+78,Erysipelas,Newly detected,3/6/2025,Gweru Provincial Hospital
+9,Meningitis,Newly detected,3/1/2025,Gweru Provincial Hospital
+6,Syphilis,Newly detected,3/2/2025,Midlands Private Hospital
+62,Tuberculosis,Newly detected,3/11/2025,Midlands Private Hospital
+67,Anthrax,Review,4/22/2025,Gweru Provincial Hospital
+83,HIV/AIDS,Newly detected,1/1/2025,Midlands Private Hospital
+8,Infectious Hepatitis B,Newly detected,5/6/2025,Gweru Provincial Hospital
+85,Leptospirosis,Newly detected,1/13/2025,Gweru Provincial Hospital
+70,Plague,Newly detected,3/7/2025,Gweru Provincial Hospital
+44,Infectious Hepatitis C,Review,2/26/2025,Midlands Private Hospital
+43,Salmonellosis,Review,2/3/2025,Clay Bank Hospital
+53,Infectious Hepatitis B,Newly detected,1/1/2025,Gweru Provincial Hospital
+26,Anthrax,Newly detected,4/26/2025,Clay Bank Hospital
+8,Scarlet Fever,Review,2/4/2025,Clay Bank Hospital
+76,Typhoid Fever,Newly detected,3/24/2025,Midlands Private Hospital
+64,Acute Respiratory Infections,Review,3/14/2025,Midlands Private Hospital
+29,Tetanus,Newly detected,5/12/2025,Gweru Provincial Hospital
+26,Acute Respiratory Infections,Review,5/22/2025,Gweru Provincial Hospital
+75,Giardiasis,Review,5/9/2025,Gweru Provincial Hospital
+59,Infectious Hepatitis B,Review,3/19/2025,Midlands Private Hospital
+58,Anthrax,Newly detected,4/25/2025,Midlands Private Hospital
+23,Syphilis,Review,4/13/2025,Gweru Provincial Hospital
+74,Cholera,Newly detected,1/9/2025,Gweru Provincial Hospital
+44,Plague,Newly detected,3/8/2025,Gweru Provincial Hospital
+61,Diphtheria,Review,2/24/2025,Clay Bank Hospital
+18,Measles,Newly detected,4/3/2025,Midlands Private Hospital
+58,Salmonellosis,Review,4/22/2025,Clay Bank Hospital
+60,Chlamydia,Newly detected,1/24/2025,Gweru Provincial Hospital
+74,Giardiasis,Newly detected,5/29/2025,Clay Bank Hospital
+40,Pertussis,Newly detected,5/4/2025,Midlands Private Hospital
+10,Rabies,Review,3/14/2025,Midlands Private Hospital
+32,Tuberculosis,Newly detected,5/11/2025,Gweru Provincial Hospital
+47,Cryptosporidiosis,Review,5/19/2025,Gweru Provincial Hospital
+65,Tetanus,Newly detected,3/28/2025,Clay Bank Hospital
+44,Polio,Newly detected,1/24/2025,Gweru Provincial Hospital
+51,Erysipelas,Review,2/2/2025,Clay Bank Hospital
+35,Measles,Review,2/15/2025,Midlands Private Hospital
+61,Measles,Review,4/15/2025,Gweru Provincial Hospital
+69,Typhus Fever,Newly detected,3/30/2025,Midlands Private Hospital
+40,Rabies,Review,3/10/2025,Midlands Private Hospital
+5,Typhoid Fever,Review,2/5/2025,Midlands Private Hospital
+20,HIV/AIDS,Review,2/14/2025,Gweru Provincial Hospital
+74,Pertussis,Newly detected,1/12/2025,Gweru Provincial Hospital
+22,Infectious Hepatitis A,Review,2/9/2025,Clay Bank Hospital
+77,Pneumonia,Newly detected,1/6/2025,Midlands Private Hospital
+8,Infectious Hepatitis B,Newly detected,3/16/2025,Gweru Provincial Hospital
+11,Pertussis,Newly detected,1/10/2025,Midlands Private Hospital
+72,Anthrax,Review,2/12/2025,Clay Bank Hospital
+73,Tetanus,Newly detected,4/28/2025,Midlands Private Hospital
+70,Pyraemia/Septicaemia,Review,4/6/2025,Midlands Private Hospital
+39,Salmonellosis,Newly detected,5/11/2025,Gweru Provincial Hospital
+61,Scarlet Fever,Newly detected,3/5/2025,Clay Bank Hospital
+17,Infectious Hepatitis A,Newly detected,5/5/2025,Gweru Provincial Hospital
+70,Measles,Review,3/24/2025,Clay Bank Hospital
+83,HIV/AIDS,Review,5/22/2025,Midlands Private Hospital
+21,Infectious Hepatitis C,Review,1/19/2025,Clay Bank Hospital
+52,Salmonellosis,Newly detected,2/23/2025,Midlands Private Hospital
+16,Syphilis,Review,1/3/2025,Clay Bank Hospital
+60,Sleeping Sickness,Review,3/20/2025,Gweru Provincial Hospital
+50,Diphtheria,Review,3/3/2025,Midlands Private Hospital
+57,Cholera,Newly detected,1/30/2025,Midlands Private Hospital
+37,Typhoid Fever,Review,5/13/2025,Gweru Provincial Hospital
+69,Typhoid Fever,Review,2/21/2025,Gweru Provincial Hospital
+46,Infectious Hepatitis A,Newly detected,4/12/2025,Clay Bank Hospital
+70,Salmonellosis,Review,2/27/2025,Clay Bank Hospital
+74,Cryptosporidiosis,Review,5/8/2025,Gweru Provincial Hospital
+54,Typhus Fever,Newly detected,3/28/2025,Midlands Private Hospital
+55,Typhoid Fever,Newly detected,2/3/2025,Midlands Private Hospital
+42,Leptospirosis,Newly detected,1/19/2025,Midlands Private Hospital
+41,Syphilis,Review,5/8/2025,Gweru Provincial Hospital
+80,Syphilis,Review,5/20/2025,Gweru Provincial Hospital
+7,Pneumonia,Review,4/9/2025,Clay Bank Hospital
+66,Rabies,Review,2/26/2025,Clay Bank Hospital
+10,Pneumonia,Review,5/19/2025,Midlands Private Hospital
+16,Pertussis,Newly detected,1/29/2025,Gweru Provincial Hospital
+60,Tuberculosis,Review,2/28/2025,Midlands Private Hospital
+63,Meningitis,Review,5/6/2025,Midlands Private Hospital
+12,Pyraemia/Septicaemia,Newly detected,5/4/2025,Clay Bank Hospital
+22,Typhus Fever,Review,1/1/2025,Clay Bank Hospital
+53,Typhoid Fever,Review,4/10/2025,Midlands Private Hospital
+28,Infectious Hepatitis C,Newly detected,4/6/2025,Midlands Private Hospital
+19,Plague,Review,4/27/2025,Gweru Provincial Hospital
+68,Tuberculosis,Newly detected,3/21/2025,Midlands Private Hospital
+32,Sleeping Sickness,Newly detected,1/14/2025,Gweru Provincial Hospital
+82,Sleeping Sickness,Newly detected,1/12/2025,Clay Bank Hospital
+53,Anthrax,Review,3/5/2025,Clay Bank Hospital
+41,Pyraemia/Septicaemia,Newly detected,5/11/2025,Midlands Private Hospital
+75,Infectious Hepatitis B,Review,5/3/2025,Gweru Provincial Hospital
+50,Erysipelas,Newly detected,2/23/2025,Clay Bank Hospital
+74,Chlamydia,Review,2/9/2025,Gweru Provincial Hospital
+37,Tuberculosis,Newly detected,1/13/2025,Clay Bank Hospital
+57,Tetanus,Review,4/17/2025,Gweru Provincial Hospital
+56,Polio,Review,4/14/2025,Midlands Private Hospital
+58,Acute Respiratory Infections,Newly detected,4/20/2025,Midlands Private Hospital
+74,Tetanus,Newly detected,2/24/2025,Gweru Provincial Hospital
+54,Leptospirosis,Newly detected,4/16/2025,Gweru Provincial Hospital
+29,Malaria,Review,2/9/2025,Clay Bank Hospital
+35,Infectious Hepatitis A,Newly detected,3/6/2025,Gweru Provincial Hospital
+78,Infectious Hepatitis C,Review,4/19/2025,Gweru Provincial Hospital
+41,Pertussis,Newly detected,4/28/2025,Gweru Provincial Hospital
+65,Giardiasis,Newly detected,2/20/2025,Clay Bank Hospital
+77,Polio,Review,5/28/2025,Clay Bank Hospital
+26,Tetanus,Review,4/23/2025,Midlands Private Hospital
+56,Tuberculosis,Newly detected,3/8/2025,Midlands Private Hospital
+48,Meningitis,Review,3/9/2025,Midlands Private Hospital
+16,Syphilis,Review,1/8/2025,Gweru Provincial Hospital
+30,Erysipelas,Review,5/9/2025,Midlands Private Hospital
+6,Typhus Fever,Review,3/31/2025,Gweru Provincial Hospital
+22,Chlamydia,Newly detected,1/21/2025,Clay Bank Hospital
+28,Measles,Review,1/20/2025,Midlands Private Hospital
+72,Tetanus,Newly detected,3/29/2025,Clay Bank Hospital
+45,Acute Respiratory Infections,Newly detected,3/6/2025,Gweru Provincial Hospital
+56,HIV/AIDS,Newly detected,1/30/2025,Gweru Provincial Hospital
+36,Tuberculosis,Newly detected,4/26/2025,Gweru Provincial Hospital
+7,Salmonellosis,Newly detected,2/14/2025,Midlands Private Hospital
+70,Infectious Hepatitis C,Newly detected,5/6/2025,Gweru Provincial Hospital
+79,Leptospirosis,Newly detected,3/24/2025,Clay Bank Hospital
+29,HIV/AIDS,Newly detected,1/16/2025,Gweru Provincial Hospital
+79,Typhoid Fever,Review,2/11/2025,Clay Bank Hospital
+14,Tetanus,Newly detected,5/26/2025,Midlands Private Hospital
+46,Typhoid Fever,Newly detected,2/28/2025,Clay Bank Hospital
+45,Infectious Hepatitis C,Newly detected,5/17/2025,Clay Bank Hospital
+84,Pyraemia/Septicaemia,Newly detected,4/24/2025,Clay Bank Hospital
+11,Pertussis,Newly detected,1/15/2025,Gweru Provincial Hospital
+55,Giardiasis,Newly detected,3/1/2025,Clay Bank Hospital
+23,Scarlet Fever,Newly detected,2/26/2025,Midlands Private Hospital
+6,Cryptosporidiosis,Newly detected,3/20/2025,Gweru Provincial Hospital
+8,Giardiasis,Newly detected,3/22/2025,Gweru Provincial Hospital
+68,Giardiasis,Review,5/10/2025,Gweru Provincial Hospital
+77,Infectious Hepatitis A,Review,5/7/2025,Midlands Private Hospital
+10,Rabies,Review,4/29/2025,Midlands Private Hospital
+54,Cholera,Review,4/4/2025,Gweru Provincial Hospital
+10,Salmonellosis,Review,5/20/2025,Gweru Provincial Hospital
+74,Polio,Newly detected,4/3/2025,Midlands Private Hospital
+68,Typhoid Fever,Review,2/24/2025,Midlands Private Hospital
+50,Chlamydia,Newly detected,1/16/2025,Gweru Provincial Hospital
+13,Tuberculosis,Newly detected,3/28/2025,Midlands Private Hospital
+7,Acute Respiratory Infections,Review,1/6/2025,Gweru Provincial Hospital
+10,Scarlet Fever,Newly detected,4/3/2025,Midlands Private Hospital
+77,Typhus Fever,Newly detected,1/7/2025,Gweru Provincial Hospital
+45,Pyraemia/Septicaemia,Newly detected,3/23/2025,Clay Bank Hospital
+45,Cryptosporidiosis,Newly detected,2/24/2025,Clay Bank Hospital
+31,Pneumonia,Review,4/19/2025,Midlands Private Hospital
+78,Polio,Review,2/21/2025,Gweru Provincial Hospital
+26,Cholera,Review,5/20/2025,Clay Bank Hospital
+48,Acute Respiratory Infections,Review,1/2/2025,Midlands Private Hospital
+51,Brucellosis,Newly detected,1/18/2025,Gweru Provincial Hospital
+36,Anthrax,Review,3/4/2025,Midlands Private Hospital
+56,HIV/AIDS,Newly detected,4/26/2025,Gweru Provincial Hospital
+84,Plague,Newly detected,5/30/2025,Midlands Private Hospital
+54,Tetanus,Newly detected,3/27/2025,Midlands Private Hospital
+38,Rabies,Review,3/5/2025,Gweru Provincial Hospital
+21,Typhoid Fever,Review,3/3/2025,Midlands Private Hospital
+40,Anthrax,Newly detected,1/13/2025,Gweru Provincial Hospital
+5,Influenza,Newly detected,4/9/2025,Gweru Provincial Hospital
+12,Pertussis,Newly detected,3/15/2025,Midlands Private Hospital
+71,Erysipelas,Newly detected,3/22/2025,Midlands Private Hospital
+26,Cholera,Newly detected,3/31/2025,Midlands Private Hospital
+33,Pyraemia/Septicaemia,Newly detected,1/2/2025,Clay Bank Hospital
+65,Brucellosis,Newly detected,4/21/2025,Midlands Private Hospital
+15,Scarlet Fever,Review,1/9/2025,Clay Bank Hospital
+16,HIV/AIDS,Review,2/11/2025,Midlands Private Hospital
+22,Erysipelas,Newly detected,3/16/2025,Clay Bank Hospital
+45,Scarlet Fever,Newly detected,4/4/2025,Clay Bank Hospital
+74,Cholera,Newly detected,3/13/2025,Midlands Private Hospital
+38,Influenza,Newly detected,4/6/2025,Clay Bank Hospital
+63,Leptospirosis,Review,4/12/2025,Clay Bank Hospital
+21,Scarlet Fever,Review,3/20/2025,Midlands Private Hospital
+77,Giardiasis,Review,2/20/2025,Midlands Private Hospital
+73,Chlamydia,Review,1/2/2025,Clay Bank Hospital
+76,Typhoid Fever,Newly detected,3/16/2025,Clay Bank Hospital
+33,Infectious Hepatitis A,Newly detected,3/2/2025,Gweru Provincial Hospital
+69,Syphilis,Review,1/24/2025,Gweru Provincial Hospital
+41,Infectious Hepatitis A,Review,4/19/2025,Midlands Private Hospital
+43,Pneumonia,Review,5/22/2025,Midlands Private Hospital
+13,Typhoid Fever,Newly detected,5/3/2025,Clay Bank Hospital
+83,Typhoid Fever,Review,1/5/2025,Clay Bank Hospital
+58,Malaria,Newly detected,4/18/2025,Midlands Private Hospital
+14,Sleeping Sickness,Review,4/7/2025,Clay Bank Hospital
+56,Typhus Fever,Newly detected,1/30/2025,Clay Bank Hospital
+49,Cholera,Review,5/14/2025,Midlands Private Hospital
+49,Giardiasis,Newly detected,1/22/2025,Clay Bank Hospital
+64,Cryptosporidiosis,Newly detected,3/8/2025,Gweru Provincial Hospital
+45,Plague,Review,3/22/2025,Clay Bank Hospital
+68,Infectious Hepatitis C,Review,5/27/2025,Clay Bank Hospital
+10,Malaria,Newly detected,3/14/2025,Clay Bank Hospital
+36,Measles,Review,4/7/2025,Midlands Private Hospital
+35,Cholera,Newly detected,2/13/2025,Gweru Provincial Hospital
+38,Plague,Review,4/5/2025,Clay Bank Hospital
+45,Cryptosporidiosis,Newly detected,4/4/2025,Clay Bank Hospital
+75,Salmonellosis,Review,3/16/2025,Clay Bank Hospital
+58,Polio,Newly detected,1/11/2025,Clay Bank Hospital
+16,Pyraemia/Septicaemia,Newly detected,4/25/2025,Clay Bank Hospital
+74,Leptospirosis,Review,1/18/2025,Gweru Provincial Hospital
+60,Rabies,Review,3/12/2025,Gweru Provincial Hospital
+58,Diphtheria,Review,4/19/2025,Gweru Provincial Hospital
+72,Typhus Fever,Newly detected,4/14/2025,Clay Bank Hospital
+18,Erysipelas,Review,1/30/2025,Clay Bank Hospital
+58,Tetanus,Review,1/31/2025,Midlands Private Hospital
+14,Anthrax,Newly detected,2/12/2025,Midlands Private Hospital
+25,Anthrax,Review,1/22/2025,Gweru Provincial Hospital
+61,Typhus Fever,Review,3/6/2025,Midlands Private Hospital
+83,Rabies,Review,4/3/2025,Midlands Private Hospital
+50,Infectious Hepatitis C,Review,1/29/2025,Clay Bank Hospital
+45,HIV/AIDS,Newly detected,5/10/2025,Gweru Provincial Hospital
+48,Acute Respiratory Infections,Review,1/5/2025,Gweru Provincial Hospital
+27,Pyraemia/Septicaemia,Review,2/24/2025,Gweru Provincial Hospital
+76,Typhus Fever,Newly detected,4/13/2025,Midlands Private Hospital
+8,Erysipelas,Newly detected,4/22/2025,Midlands Private Hospital
+13,Anthrax,Review,4/27/2025,Clay Bank Hospital
+5,Tetanus,Newly detected,2/7/2025,Midlands Private Hospital
+49,Diphtheria,Review,1/18/2025,Midlands Private Hospital
+9,Tetanus,Newly detected,3/11/2025,Gweru Provincial Hospital
+72,Infectious Hepatitis A,Review,4/24/2025,Gweru Provincial Hospital
+7,Pertussis,Newly detected,5/22/2025,Gweru Provincial Hospital
+11,Pyraemia/Septicaemia,Newly detected,4/3/2025,Gweru Provincial Hospital
+23,Chlamydia,Review,4/20/2025,Clay Bank Hospital
+59,Scarlet Fever,Newly detected,3/5/2025,Clay Bank Hospital
+60,Scarlet Fever,Review,1/24/2025,Clay Bank Hospital
+40,Typhus Fever,Review,1/22/2025,Midlands Private Hospital
+51,HIV/AIDS,Newly detected,1/20/2025,Midlands Private Hospital
+32,HIV/AIDS,Review,2/11/2025,Clay Bank Hospital
+25,Meningitis,Newly detected,3/10/2025,Clay Bank Hospital
+74,Chlamydia,Newly detected,5/19/2025,Clay Bank Hospital
+50,Cholera,Newly detected,5/24/2025,Midlands Private Hospital
+52,Pneumonia,Newly detected,5/26/2025,Midlands Private Hospital
+66,Syphilis,Review,5/19/2025,Clay Bank Hospital
+78,Brucellosis,Review,1/31/2025,Gweru Provincial Hospital
+55,Tetanus,Review,1/26/2025,Gweru Provincial Hospital
+45,Pneumonia,Newly detected,2/2/2025,Clay Bank Hospital
+66,Cryptosporidiosis,Newly detected,3/4/2025,Clay Bank Hospital
+17,Syphilis,Newly detected,5/3/2025,Midlands Private Hospital
+41,Pyraemia/Septicaemia,Review,4/8/2025,Midlands Private Hospital
+79,Infectious Hepatitis C,Review,4/10/2025,Midlands Private Hospital
+52,Pyraemia/Septicaemia,Newly detected,3/16/2025,Midlands Private Hospital
+80,Erysipelas,Review,3/2/2025,Midlands Private Hospital
+26,Typhoid Fever,Review,4/22/2025,Midlands Private Hospital
+78,Infectious Hepatitis C,Review,1/27/2025,Midlands Private Hospital
+22,Polio,Review,1/3/2025,Midlands Private Hospital
+17,Erysipelas,Newly detected,1/7/2025,Midlands Private Hospital
+43,Cryptosporidiosis,Newly detected,4/30/2025,Gweru Provincial Hospital
+28,Polio,Newly detected,4/29/2025,Clay Bank Hospital
+79,Plague,Newly detected,1/28/2025,Clay Bank Hospital
+32,Measles,Newly detected,1/31/2025,Midlands Private Hospital
+9,Leptospirosis,Newly detected,5/8/2025,Midlands Private Hospital
+47,Syphilis,Newly detected,2/3/2025,Clay Bank Hospital
+37,Syphilis,Review,2/17/2025,Midlands Private Hospital
+20,Acute Respiratory Infections,Review,5/4/2025,Clay Bank Hospital
+20,Cryptosporidiosis,Newly detected,3/2/2025,Gweru Provincial Hospital
+61,Cryptosporidiosis,Review,1/31/2025,Midlands Private Hospital
+68,Acute Respiratory Infections,Review,4/13/2025,Clay Bank Hospital
+50,Plague,Newly detected,5/21/2025,Gweru Provincial Hospital
+18,Plague,Review,1/17/2025,Clay Bank Hospital
+18,Erysipelas,Review,3/15/2025,Gweru Provincial Hospital
+29,Typhoid Fever,Newly detected,4/2/2025,Clay Bank Hospital
+50,Pneumonia,Newly detected,3/31/2025,Gweru Provincial Hospital
+68,Tetanus,Newly detected,4/28/2025,Midlands Private Hospital
+55,Chlamydia,Newly detected,5/25/2025,Clay Bank Hospital
+85,Typhus Fever,Newly detected,2/8/2025,Gweru Provincial Hospital
+45,Pyraemia/Septicaemia,Review,2/21/2025,Clay Bank Hospital
+58,Syphilis,Review,3/26/2025,Midlands Private Hospital
+67,Cholera,Newly detected,1/16/2025,Gweru Provincial Hospital
+81,Erysipelas,Newly detected,2/21/2025,Midlands Private Hospital
+50,Meningitis,Newly detected,4/26/2025,Midlands Private Hospital
+61,Chlamydia,Newly detected,2/16/2025,Clay Bank Hospital
+60,Salmonellosis,Review,4/25/2025,Clay Bank Hospital
+58,Giardiasis,Newly detected,1/29/2025,Gweru Provincial Hospital
+42,Scarlet Fever,Review,2/17/2025,Clay Bank Hospital
+14,Chlamydia,Newly detected,4/7/2025,Clay Bank Hospital
+75,Malaria,Review,3/30/2025,Gweru Provincial Hospital
+38,Erysipelas,Newly detected,4/29/2025,Clay Bank Hospital
+14,Erysipelas,Review,1/1/2025,Clay Bank Hospital
+30,Meningitis,Newly detected,2/11/2025,Clay Bank Hospital
+17,Pertussis,Review,2/15/2025,Midlands Private Hospital
+18,Typhus Fever,Newly detected,3/5/2025,Midlands Private Hospital
+9,Leptospirosis,Review,3/17/2025,Clay Bank Hospital
+5,Cholera,Newly detected,1/6/2025,Gweru Provincial Hospital
+63,Malaria,Review,2/7/2025,Clay Bank Hospital
+5,Pneumonia,Newly detected,1/17/2025,Gweru Provincial Hospital
+53,Tuberculosis,Review,3/2/2025,Clay Bank Hospital
+46,Giardiasis,Review,1/3/2025,Gweru Provincial Hospital
+73,Chlamydia,Newly detected,1/15/2025,Midlands Private Hospital
+70,Pneumonia,Newly detected,1/17/2025,Gweru Provincial Hospital
+8,Tetanus,Newly detected,5/21/2025,Midlands Private Hospital
+82,Giardiasis,Review,2/15/2025,Midlands Private Hospital
+65,Cholera,Review,1/5/2025,Clay Bank Hospital
+48,Typhoid Fever,Review,4/18/2025,Midlands Private Hospital
+76,Pneumonia,Newly detected,3/9/2025,Midlands Private Hospital
+7,Giardiasis,Newly detected,1/18/2025,Clay Bank Hospital
+61,Brucellosis,Newly detected,4/11/2025,Gweru Provincial Hospital
+32,Malaria,Newly detected,5/15/2025,Midlands Private Hospital
+81,Measles,Review,3/10/2025,Clay Bank Hospital
+11,Cholera,Newly detected,5/1/2025,Clay Bank Hospital
+37,Plague,Newly detected,4/30/2025,Gweru Provincial Hospital
+75,Plague,Newly detected,5/18/2025,Midlands Private Hospital
+29,Cryptosporidiosis,Newly detected,1/26/2025,Clay Bank Hospital
+12,Typhus Fever,Newly detected,1/12/2025,Gweru Provincial Hospital
+53,Anthrax,Newly detected,2/20/2025,Gweru Provincial Hospital
+59,Meningitis,Newly detected,1/14/2025,Midlands Private Hospital
+47,Meningitis,Review,2/14/2025,Midlands Private Hospital
+61,Scarlet Fever,Newly detected,3/5/2025,Clay Bank Hospital
+48,Tetanus,Newly detected,1/23/2025,Clay Bank Hospital
+60,Influenza,Review,2/15/2025,Clay Bank Hospital
+9,Syphilis,Review,5/29/2025,Clay Bank Hospital
+8,Salmonellosis,Newly detected,1/13/2025,Gweru Provincial Hospital
+5,Giardiasis,Newly detected,3/31/2025,Gweru Provincial Hospital
+6,HIV/AIDS,Newly detected,5/12/2025,Clay Bank Hospital
+25,Infectious Hepatitis A,Review,1/14/2025,Gweru Provincial Hospital
+78,Typhoid Fever,Review,2/1/2025,Gweru Provincial Hospital
+75,Acute Respiratory Infections,Newly detected,1/27/2025,Midlands Private Hospital
+65,Infectious Hepatitis C,Newly detected,5/28/2025,Clay Bank Hospital
+51,Rabies,Review,3/22/2025,Midlands Private Hospital
+72,Typhoid Fever,Review,3/9/2025,Clay Bank Hospital
+5,Pneumonia,Review,2/5/2025,Midlands Private Hospital
+22,Infectious Hepatitis A,Newly detected,1/5/2025,Gweru Provincial Hospital
+77,Polio,Newly detected,5/6/2025,Clay Bank Hospital
+81,Erysipelas,Review,4/29/2025,Gweru Provincial Hospital
+83,Pertussis,Newly detected,3/2/2025,Gweru Provincial Hospital
+59,HIV/AIDS,Newly detected,1/31/2025,Gweru Provincial Hospital
+25,Infectious Hepatitis A,Review,3/18/2025,Gweru Provincial Hospital
+47,Giardiasis,Newly detected,3/14/2025,Midlands Private Hospital
+56,Influenza,Review,3/16/2025,Clay Bank Hospital
+28,Typhoid Fever,Review,4/6/2025,Gweru Provincial Hospital
+71,Pertussis,Newly detected,2/7/2025,Gweru Provincial Hospital
+74,Leptospirosis,Newly detected,5/29/2025,Midlands Private Hospital
+62,Acute Respiratory Infections,Review,5/27/2025,Midlands Private Hospital
+10,Giardiasis,Review,5/31/2025,Gweru Provincial Hospital
+12,Rabies,Newly detected,3/12/2025,Midlands Private Hospital
+74,Sleeping Sickness,Review,4/4/2025,Clay Bank Hospital
+83,Infectious Hepatitis C,Review,4/12/2025,Midlands Private Hospital
+5,Syphilis,Review,4/6/2025,Clay Bank Hospital
+70,Cholera,Review,3/29/2025,Clay Bank Hospital
+74,Typhoid Fever,Review,2/25/2025,Gweru Provincial Hospital
+18,Measles,Review,5/30/2025,Midlands Private Hospital
+79,Malaria,Newly detected,5/5/2025,Midlands Private Hospital
+31,Infectious Hepatitis B,Newly detected,1/6/2025,Midlands Private Hospital
+5,Anthrax,Newly detected,5/29/2025,Clay Bank Hospital
+34,Measles,Review,2/3/2025,Midlands Private Hospital
+27,Measles,Review,4/2/2025,Midlands Private Hospital
+65,Malaria,Review,1/7/2025,Clay Bank Hospital
+37,Infectious Hepatitis C,Newly detected,1/3/2025,Midlands Private Hospital
+47,Erysipelas,Newly detected,3/17/2025,Clay Bank Hospital
+48,Pyraemia/Septicaemia,Review,4/26/2025,Midlands Private Hospital

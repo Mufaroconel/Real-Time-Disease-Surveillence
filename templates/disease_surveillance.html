@@ -1,0 +1,318 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    body {
+        background-color: #f5f7fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .main-container {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        padding: 30px;
+        margin: 30px auto;
+        max-width: 1200px;
+    }
+    .card {
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        margin-bottom: 30px;
+    }
+    .card-header {
+        background-color: #3a86ff;
+        color: white;
+        font-weight: 600;
+        font-size: 1.4rem;
+        border-radius: 12px 12px 0 0 !important;
+        padding: 20px;
+        text-align: center;
+    }
+    .card-body {
+        padding: 25px;
+    }
+    .section-title {
+        color: #2b2d42;
+        font-weight: 600;
+        margin: 25px 0 15px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #edf2f4;
+    }
+    .filter-container {
+        background-color: #edf2f4;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 25px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        align-items: center;
+    }
+    .filter-label {
+        font-weight: 600;
+        color: #2b2d42;
+        margin-right: 8px;
+    }
+    .filter-select {
+        padding: 10px 15px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        background-color: white;
+        min-width: 250px;
+        transition: all 0.3s;
+    }
+    .filter-select:focus {
+        border-color: #3a86ff;
+        box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.2);
+        outline: none;
+    }
+    .btn-primary {
+        background-color: #3a86ff;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        font-weight: 600;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    .btn-primary:hover {
+        background-color: #2667d6;
+        transform: translateY(-1px);
+    }
+    .data-table-container {
+        overflow-x: auto;
+        margin-bottom: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    .data-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .data-table th {
+        background-color: #3a86ff;
+        color: white;
+        padding: 12px 15px;
+        text-align: left;
+        position: sticky;
+        top: 0;
+    }
+    .data-table td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #edf2f4;
+    }
+    .data-table tr:nth-child(even) {
+        background-color: #f8fafc;
+    }
+    .data-table tr:hover {
+        background-color: #e2e8f0;
+    }
+    .map-container {
+        height: 500px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border: 1px solid #e2e8f0;
+    }
+    .risk-high {
+        color: #ef233c;
+        font-weight: 600;
+    }
+    .risk-medium {
+        color: #ff9e00;
+        font-weight: 600;
+    }
+    .risk-low {
+        color: #2ec4b6;
+        font-weight: 600;
+    }
+    .tab-container {
+        display: flex;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #e2e8f0;
+    }
+    .tab {
+        padding: 10px 20px;
+        cursor: pointer;
+        font-weight: 600;
+        color: #64748b;
+        border-bottom: 3px solid transparent;
+        transition: all 0.3s;
+    }
+    .tab.active {
+        color: #3a86ff;
+        border-bottom: 3px solid #3a86ff;
+    }
+    .tab-content {
+        display: none;
+    }
+    .tab-content.active {
+        display: block;
+    }
+    .count-badge {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        background-color: #e2e8f0;
+        color: #2b2d42;
+    }
+    @media (max-width: 768px) {
+        .main-container {
+            padding: 15px;
+            margin: 15px auto;
+        }
+        .filter-container {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .filter-select {
+            width: 100%;
+        }
+        .data-table th, .data-table td {
+            padding: 8px 10px;
+        }
+    }
+</style>
+
+<div class="main-container">
+    <div class="card">
+        <div class="card-header">
+            Disease Surveillance
+        </div>
+        <div class="card-body">
+            <!-- Filter Section -->
+            <div class="filter-container">
+                <form method="POST" id="filterForm">
+                    <div style="display: flex; align-items: center;">
+                        <span class="filter-label">Hospital:</span>
+                        <select id="hospital" name="hospital" class="filter-select">
+                            <option value="">All Hospitals</option>
+                            {% for hospital in hospitals %}
+                            <option value="{{ hospital }}" {% if selected_hospital == hospital %}selected{% endif %}>{{ hospital }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary">Apply Filters</button>
+                </form>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="tab-container">
+                <div class="tab active" data-tab="summary">Summary</div>
+                <div class="tab" data-tab="details">Detailed View</div>
+                <div class="tab" data-tab="map">Surveillance Map</div>
+            </div>
+
+            <!-- Summary Tab -->
+            <div id="summary" class="tab-content active">
+                <h3 class="section-title">Hospital Case Overview</h3>
+                <div class="data-table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Hospital</th>
+                                <th>Total Cases</th>
+                                <th>Risk Level</th>
+                                <th>Top Disease</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for index, row in total_cases_by_hospital.iterrows() %}
+                            <tr>
+                                <td>{{ row.Hospital_Name }}</td>
+                                <td><span class="count-badge">{{ row.Case_Count }}</span></td>
+                                <td>
+                                    {% if risk_levels[row.Hospital_Name] == 'High' %}
+                                        <span class="risk-high">{{ risk_levels[row.Hospital_Name] }}</span>
+                                    {% elif risk_levels[row.Hospital_Name] == 'Medium' %}
+                                        <span class="risk-medium">{{ risk_levels[row.Hospital_Name] }}</span>
+                                    {% else %}
+                                        <span class="risk-low">{{ risk_levels[row.Hospital_Name] }}</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ top_diseases[row.Hospital_Name] }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Detailed View Tab -->
+            <div id="details" class="tab-content">
+                <h3 class="section-title">Disease Distribution</h3>
+                <div class="data-table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Disease</th>
+                                {% for hospital in hospitals %}
+                                <th>{{ hospital }}</th>
+                                {% endfor %}
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for disease in disease_counts.index %}
+                            <tr>
+                                <td>{{ disease }}</td>
+                                {% for hospital in hospitals %}
+                                <td>
+                                    {% if disease_counts.loc[disease, hospital] > 0 %}
+                                        <span class="count-badge">{{ disease_counts.loc[disease, hospital] }}</span>
+                                    {% else %}
+                                        <span class="count-badge">-</span>
+                                    {% endif %}
+                                </td>
+                                {% endfor %}
+                                <td><strong>{{ disease_counts.loc[disease].sum() }}</strong></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Map View Tab -->
+            <div id="map" class="tab-content">
+                <h3 class="section-title">Live Disease Map</h3>
+                <div class="map-container">
+                    {{ map_html | safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Tab functionality
+    document.querySelectorAll('.tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Remove active class from all tabs and contents
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            
+            // Add active class to clicked tab and corresponding content
+            tab.classList.add('active');
+            document.getElementById(tab.dataset.tab).classList.add('active');
+        });
+    });
+
+    // Auto-submit form when hospital selection changes
+    document.getElementById('hospital').addEventListener('change', function() {
+        document.getElementById('filterForm').submit();
+    });
+
+    // Highlight rows with high risk in the summary table
+    document.querySelectorAll('.risk-high').forEach(item => {
+        item.closest('tr').style.backgroundColor = '#fff5f5';
+    });
+</script>
+{% endblock %}

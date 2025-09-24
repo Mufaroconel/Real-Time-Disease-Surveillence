@@ -1,0 +1,268 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    body {
+        background-color: #f5f7fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .recommendation-container {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 40px;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    .title {
+        color: #2b2d42;
+        font-size: 2rem;
+        margin-bottom: 30px;
+        font-weight: 700;
+    }
+    .carousel-container {
+        position: relative;
+        height: 350px;
+        margin: 30px 0;
+    }
+    .recommendation-card {
+        position: absolute;
+        width: calc(100% - 40px);
+        height: calc(100% - 40px);
+        padding: 20px;
+        background: linear-gradient(135deg, #3a86ff 0%, #2667d6 100%);
+        border-radius: 12px;
+        color: white;
+        box-shadow: 0 10px 20px rgba(58, 134, 255, 0.3);
+        opacity: 0;
+        transition: all 0.8s ease;
+        transform: scale(0.9);
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 20px;
+    }
+    .recommendation-card.active {
+        opacity: 1;
+        transform: scale(1);
+        z-index: 10;
+    }
+    .recommendation-icon {
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+    .recommendation-text {
+        font-size: 1.3rem;
+        line-height: 1.5;
+        margin-bottom: 20px;
+        padding: 0 20px;
+        text-align: center;
+        max-height: 60%;
+        overflow: auto;
+    }
+    .controls {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 30px;
+    }
+    .control-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #e2e8f0;
+        border: none;
+        color: #3a86ff;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .control-btn:hover {
+        background: #3a86ff;
+        color: white;
+        transform: translateY(-3px);
+    }
+    .progress-dots {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+    }
+    .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #e2e8f0;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    .dot.active {
+        background: #3a86ff;
+        transform: scale(1.2);
+    }
+    @media (max-width: 768px) {
+        .recommendation-container {
+            margin: 20px;
+            padding: 20px;
+        }
+        .carousel-container {
+            height: 300px;
+        }
+        .recommendation-text {
+            font-size: 1.1rem;
+        }
+    }
+</style>
+
+<div class="recommendation-container">
+    <h1 class="title">Health Awareness Recommendations</h1>
+    
+    <div class="carousel-container">
+        {% for recommendation in recommendations %}
+        <div class="recommendation-card" data-index="{{ loop.index0 }}">
+            <div class="recommendation-icon">
+                {% if "vaccin" in recommendation.lower() %}
+                    <i class="fas fa-syringe"></i>
+                {% elif "hygiene" in recommendation.lower() %}
+                    <i class="fas fa-hands-wash"></i>
+                {% elif "diet" in recommendation.lower() or "nutrition" in recommendation.lower() %}
+                    <i class="fas fa-apple-alt"></i>
+                {% elif "exercise" in recommendation.lower() %}
+                    <i class="fas fa-running"></i>
+                {% elif "water" in recommendation.lower() %}
+                    <i class="fas fa-tint"></i>
+                {% elif "sleep" in recommendation.lower() %}
+                    <i class="fas fa-bed"></i>
+                {% elif "mask" in recommendation.lower() %}
+                    <i class="fas fa-head-side-mask"></i>
+                {% else %}
+                    <i class="fas fa-heartbeat"></i>
+                {% endif %}
+            </div>
+            <div class="recommendation-text">{{ recommendation }}</div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div class="controls">
+        <button class="control-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <button class="control-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    
+    <div class="progress-dots">
+        {% for recommendation in recommendations %}
+        <div class="dot" data-index="{{ loop.index0 }}"></div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Include Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.recommendation-card');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentIndex = 0;
+        let autoRotate = true;
+        let rotateInterval;
+        const ROTATION_INTERVAL = 5000; // 5 seconds
+
+        // Show first card by default
+        showCard(currentIndex);
+        
+        // Auto-rotation function
+        function startRotation() {
+            clearInterval(rotateInterval); // Clear any existing interval
+            rotateInterval = setInterval(() => {
+                if (autoRotate) {
+                    nextCard();
+                }
+            }, ROTATION_INTERVAL);
+        }
+        startRotation();
+
+        // Show specific card
+        function showCard(index) {
+            // Hide all cards
+            cards.forEach(card => {
+                card.classList.remove('active');
+                card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            });
+            
+            // Update dots
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Show selected card
+            cards[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentIndex = index;
+        }
+        
+        // Next card
+        function nextCard() {
+            let newIndex = (currentIndex + 1) % cards.length;
+            showCard(newIndex);
+        }
+        
+        // Previous card
+        function prevCard() {
+            let newIndex = (currentIndex - 1 + cards.length) % cards.length;
+            showCard(newIndex);
+        }
+        
+        // Button controls
+        nextBtn.addEventListener('click', () => {
+            autoRotate = false;
+            clearInterval(rotateInterval);
+            nextCard();
+            setTimeout(() => {
+                autoRotate = true;
+                startRotation();
+            }, ROTATION_INTERVAL * 2);
+        });
+        
+        prevBtn.addEventListener('click', () => {
+            autoRotate = false;
+            clearInterval(rotateInterval);
+            prevCard();
+            setTimeout(() => {
+                autoRotate = true;
+                startRotation();
+            }, ROTATION_INTERVAL * 2);
+        });
+        
+        // Dot navigation
+        dots.forEach(dot => {
+            dot.addEventListener('click', function() {
+                autoRotate = false;
+                clearInterval(rotateInterval);
+                showCard(parseInt(this.dataset.index));
+                setTimeout(() => {
+                    autoRotate = true;
+                    startRotation();
+                }, ROTATION_INTERVAL * 2);
+            });
+        });
+        
+        // Pause on hover
+        document.querySelector('.carousel-container').addEventListener('mouseenter', () => {
+            autoRotate = false;
+            clearInterval(rotateInterval);
+        });
+        
+        document.querySelector('.carousel-container').addEventListener('mouseleave', () => {
+            autoRotate = true;
+            startRotation();
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,377 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    body {
+        background-color: #f8f9fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .main-container {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        margin: 40px auto;
+        max-width: 900px;
+    }
+    .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+    }
+    .card-header {
+        background-color: rgb(30, 85, 235);
+        color: white;
+        font-weight: bold;
+        font-size: 1.3rem;
+        border-radius: 10px 10px 0 0 !important;
+        padding: 20px;
+        text-align: center;
+    }
+    .card-body {
+        padding: 30px;
+    }
+    .filter-container {
+        margin-bottom: 20px;
+    }
+    .filter-select {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid rgb(119, 177, 235);
+        font-size: 1rem;
+        width: 100%;
+        max-width: 300px;
+    }
+    .section-title {
+        color: #ffffff;
+        font-weight: 600;
+        margin-bottom: 20px;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    .frequent-diseases-title {
+        background-color: rgb(82, 154, 231); /* Blue */
+    }
+    .custom-date-range-title {
+        background-color: rgb(137, 206, 202); /* Red */
+    }
+    .warnings-title {
+        background-color: #ffc107; /* Yellow */
+    }
+    .seasonal-patterns-title {
+        background-color: rgb(40, 167, 125); /* Green */
+    }
+    .age-risk-analysis-title {
+        background-color: #17a2b8; /* Cyan */
+    }
+    .data-list {
+        list-style-type: none;
+        padding: 0;
+    }
+    .data-list li {
+        padding: 10px 15px;
+        margin-bottom: 8px;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        border-left: 4px solid #4e73df;
+    }
+    .warning-list li {
+        border-left-color: #dc3545;
+    }
+    .form-container {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #495057;
+    }
+    .form-control {
+        width: 100%;
+        padding: 10px 15px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+    .form-control:focus {
+        border-color: #4e73df;
+        box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+    }
+    .btn-primary {
+        background-color:rgb(99, 226, 141);
+        border-color:rgb(96, 207, 146);
+        color: white;
+        padding: 10px 25px;
+        font-weight: 600;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s;
+        margin-top: 10px;
+    }
+    .btn-primary:hover {
+        background-color:rgb(115, 233, 135);
+        border-color:rgb(46, 217, 174);
+    }
+    .table-container {
+        overflow-x: auto;
+        margin-top: 20px;
+    }
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .table th {
+        background-color: #f8f9fa;
+        color: #495057;
+        font-weight: 600;
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 2px solid #dee2e6;
+    }
+    .table td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #dee2e6;
+    }
+    .table tr:last-child td {
+        border-bottom: none;
+    }
+    .table tr:hover {
+        background-color: #f8f9fa;
+    }
+    .no-data {
+        color: #6c757d;
+        font-style: italic;
+        padding: 20px;
+        text-align: center;
+    }
+    .time-period {
+        font-style: italic;
+        color: #6c757d;
+        margin-bottom: 15px;
+    }
+    .warning-item {
+        color: #dc3545;
+        font-style: italic;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .warning-icon {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+    }
+    @media (max-width: 768px) {
+        .main-container {
+            padding: 25px;
+            margin: 20px auto;
+        }
+        .card-body {
+            padding: 20px;
+        }
+    }
+</style>
+
+<div class="main-container">
+    <div class="card">
+        <div class="card-header">
+            Outbreak Progression Analysis
+        </div>
+        <div class="card-body">
+            <div class="filter-container">
+                <select id="sectionFilter" class="filter-select" onchange="filterSections()">
+                    <option value="all">View All Sections</option>
+                    <option value="frequentDiseases">Most Frequent Diseases</option>
+                    <option value="customDateRange">Custom Date Range Analysis</option>
+                    <option value="warnings">Warnings</option>
+                    <option value="seasonalPatterns">Seasonal Disease Patterns</option>
+                    <option value="ageRiskAnalysis">Age-Based Risk Analysis</option>
+                </select>
+            </div>
+
+            <h3 class="section-title frequent-diseases-title" onclick="toggleSection('frequentDiseases')">Most Frequent Diseases (Last 3 Days)</h3>
+            <p class="time-period">Showing data from {{ last_three_days.strftime('%Y-%m-%d') }} to {{ current_date.strftime('%Y-%m-%d') }}</p>
+            <div id="frequentDiseases" style="display: block;">
+                {% if most_frequent_diseases is not none and not most_frequent_diseases.empty %}
+                    <ul class="data-list">
+                        {% for disease, count in most_frequent_diseases.items() %}
+                        <li>{{ disease }}: {{ count }} cases</li>
+                        {% endfor %}
+                    </ul>
+                    <form method="POST" action="/download-frequent-diseases">
+                        <label for="format" class="form-label">Select Format to Download:</label>
+                        <select name="format" id="format" class="form-control" required>
+                            <option value="excel">Excel</option>
+                            <option value="pdf">PDF</option>
+                        </select>
+                        <button type="submit" class="btn-primary">Download Most Frequent Diseases</button>
+                    </form>
+                {% else %}
+                    <p class="no-data">No data available for the last 3 days</p>
+                {% endif %}
+            </div>
+
+            <div class="form-container">
+                <h3 class="section-title custom-date-range-title" onclick="toggleSection('customDateRange')">Custom Date Range Analysis</h3>
+                <div id="customDateRange" style="display: block;">
+                    <form method="POST">
+                        <div class="form-row" style="display: flex; gap: 20px; margin-bottom: 20px;">
+                            <div class="form-group" style="flex: 1;">
+                                <label for="start_date" class="form-label">Start Date</label>
+                                <input type="date" id="start_date" name="start_date" class="form-control" required>
+                            </div>
+                            <div class="form-group" style="flex: 1;">
+                                <label for="end_date" class="form-label">End Date</label>
+                                <input type="date" id="end_date" name="end_date" class="form-control" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-primary">Get Analysis</button>
+                    </form>
+                </div>
+            </div>
+
+            {% if warnings %}
+            <h3 class="section-title warnings-title" onclick="toggleSection('warnings')">Warnings</h3>
+            <div id="warnings" style="display: block;">
+                <ul class="data-list warning-list">
+                    {% for warning in warnings %}
+                    <li>
+                        <span class="warning-item">
+                            <svg class="warning-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 2L1 21h22L12 2zm0 3.5L19.5 19h-15L12 5.5z"/>
+                                <path d="M12 16c.8 0 1.5-.7 1.5-1.5S12.8 13 12 13s-1.5.7-1.5 1.5.7 1.5 1.5 1.5zm-1-5h2v-4h-2v4z"/>
+                            </svg>
+                            {{ warning }}
+                        </span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            {% if seasonal_patterns is not none and not seasonal_patterns.empty %}
+            <h3 class="section-title seasonal-patterns-title" onclick="toggleSection('seasonalPatterns')">Seasonal Disease Patterns</h3>
+            <div id="seasonalPatterns" style="display: block;">
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Month</th>
+                                {% for disease in seasonal_patterns.columns %}
+                                <th>{{ disease }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for month_num in seasonal_patterns.index %}
+                            <tr>
+                                <td>
+                                    {% if month_num == 1 %}January
+                                    {% elif month_num == 2 %}February
+                                    {% elif month_num == 3 %}March
+                                    {% elif month_num == 4 %}April
+                                    {% elif month_num == 5 %}May
+                                    {% elif month_num == 6 %}June
+                                    {% elif month_num == 7 %}July
+                                    {% elif month_num == 8 %}August
+                                    {% elif month_num == 9 %}September
+                                    {% elif month_num == 10 %}October
+                                    {% elif month_num == 11 %}November
+                                    {% elif month_num == 12 %}December
+                                    {% else %}Unknown
+                                    {% endif %}
+                                </td>
+                                {% for count in seasonal_patterns.loc[month_num] %}
+                                <td>{{ count }}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if age_risk_analysis is not none and not age_risk_analysis.empty %}
+            <h3 class="section-title age-risk-analysis-title" onclick="toggleSection('ageRiskAnalysis')">Age-Based Risk Analysis</h3>
+            <div id="ageRiskAnalysis" style="display: block;">
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Age Group</th>
+                                {% for disease in age_risk_analysis.columns %}
+                                <th>{{ disease }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for age_group in age_risk_analysis.index %}
+                            <tr>
+                                <td>{{ age_group }}</td>
+                                {% for count in age_risk_analysis.loc[age_group] %}
+                                <td>{{ count }}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <form method="POST" action="/download-age-risk-analysis">
+                    <label for="format" class="form-label">Select Format to Download:</label>
+                    <select name="format" id="format" class="form-control" required>
+                        <option value="excel">Excel</option>
+                        <option value="pdf">PDF</option>
+                    </select>
+                    <button type="submit" class="btn-primary">Download Age Risk Analysis</button>
+                </form>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Automatically set the date inputs to the last 3 days
+        const today = new Date();
+        const threeDaysAgo = new Date();
+        threeDaysAgo.setDate(today.getDate() - 3);
+        
+        document.getElementById("start_date").value = threeDaysAgo.toISOString().split("T")[0];
+        document.getElementById("end_date").value = today.toISOString().split("T")[0];
+    });
+
+    function toggleSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section.style.display === "block") {
+            section.style.display = "none";
+        } else {
+            section.style.display = "block";
+        }
+    }
+
+    function filterSections() {
+        const selectedValue = document.getElementById('sectionFilter').value;
+        const sections = ['frequentDiseases', 'customDateRange', 'warnings', 'seasonalPatterns', 'ageRiskAnalysis'];
+
+        sections.forEach(sectionId => {
+            const section = document.getElementById(sectionId);
+            if (selectedValue === 'all') {
+                section.style.display = 'block';
+            } else {
+                section.style.display = sectionId === selectedValue ? 'block' : 'none';
+            }
+        });
+    }
+</script>
+
+{% endblock %}

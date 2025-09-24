@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease Surveillance Application</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            color: #333;
+        }
+
+        header {
+            background: hsla(180, 1.30%, 45.30%, 0.79);
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+            height: 60px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-center-right {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-grow: 1;
+            gap: 25px;
+            margin-right: 20px;
+        }
+
+        .top-nav-item {
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 10px 15px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(33, 150, 243, 0.5);
+            box-shadow: 0 4px 8px rgba(33, 150, 243, 0.3);
+            background-color: rgba(122, 163, 194, 0.8);
+        }
+
+        .top-nav-item:hover {
+            background-color: rgba(33, 150, 243, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(33, 150, 243, 0.4);
+        }
+
+        .top-nav-item i {
+            font-size: 18px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid rgb(87, 145, 168);
+            background-color: rgb(130, 135, 202);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header-logo img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .container {
+            display: flex;
+            flex-grow: 1;
+            overflow: hidden;
+            margin-top: 60px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .sidebar {
+            width: 240px;
+            background: rgb(72, 72, 73);
+            padding: 15px 0;
+            height: calc(100vh - 60px);
+            position: fixed;
+            overflow-y: auto;
+            top: 60px;
+            left: 0;
+            z-index: 999;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar.collapsed {
+            transform: translateX(-240px);
+        }
+
+        .main-content {
+            margin-left: 240px;
+            padding: 25px;
+            flex-grow: 1;
+            overflow-y: auto;
+            height: calc(100vh - 60px);
+            background-color: #f4f4f4;
+            transition: margin-left 0.3s ease;
+        }
+
+        .main-content.expanded {
+            margin-left: 0;
+        }
+
+        .toggle-sidebar {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-sidebar:hover {
+            background-color: rgba(90, 88, 88, 0.2);
+        }
+
+        .logout-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            display: none;
+        }
+
+        .spinner {
+            width: 70px;
+            height: 70px;
+            border: 8px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .logout-message {
+            color: white;
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .sidebar-item {
+            padding: 14px 20px;
+            cursor: pointer;
+            position: relative;
+            margin: 5px 0;
+            font-size: 18px;
+            font-weight: 500;
+            border-radius: 0;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            color: #e0e0e0;
+        }
+
+        .sidebar-item:hover {
+            background-color: rgb(45, 45, 48);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .sidebar-item i {
+            margin-right: 15px;
+            width: 24px;
+            text-align: center;
+            font-size: 20px;
+            color: #87c1d1;
+        }
+
+        .submenu {
+            display: none;
+            padding-left: 15px;
+            margin-top: 5px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .submenu-item {
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+        }
+
+        .submenu-item i {
+            font-size: 16px;
+        }
+
+        .submenu-item:hover {
+            color: #fff;
+        }
+
+        .user-profile {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logout-sidebar {
+            margin-top: 20px;
+            padding: 14px 20px;
+            cursor: pointer;
+            position: relative;
+            font-size: 18px;
+            border-radius: 0;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            color: #e0e0e0;
+            background-color: rgba(15, 15, 15, 0.75);
+            border-top: 1px solid rgba(62, 60, 158, 0.3);
+        }
+
+        .logout-sidebar:hover {
+            background-color: rgb(61, 61, 63);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .logout-sidebar i {
+            margin-right: 15px;
+            width: 24px;
+            text-align: center;
+            font-size: 20px;
+            color:rgb(102, 126, 150);
+        }
+
+        .sidebar-footer {
+            margin-top: auto;
+            padding-bottom: 15px;
+        }
+
+        @media (max-width: 1024px) {
+            .header-center-right {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                top: 0;
+            }
+            .main-content {
+                margin-left: 0;
+                padding: 15px;
+            }
+            
+            header {
+                flex-direction: column;
+                padding: 10px;
+                height: auto;
+            }
+            
+            .user-profile {
+                margin-top: 10px;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .header-left {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logout-overlay" id="logoutOverlay">
+        <div style="text-align: center;">
+            <div class="spinner"></div>
+            <div class="logout-message">logging out...</div>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-left">
+            <div class="header-logo">
+                <img src="{{ url_for('static', filename='images/stat.jpeg') }}" alt="Logo">
+            </div>
+            <button class="toggle-sidebar" id="toggleSidebar">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <div class="header-center-right">
+            <div class="top-nav-item" onclick="location.href='/surveillance-map'">
+                <i class="fas fa-map"></i>
+                <span>Map</span>
+            </div>
+            <div class="top-nav-item" onclick="location.href='/disease-database'">
+                <i class="fas fa-database"></i>
+                <span>Disease Database</span>
+            </div>
+            <div class="top-nav-item" onclick="location.href='/outbreak-progression'">
+                <i class="fas fa-virus"></i>
+                <span>Outbreak Tracking</span>
+            </div>
+            <div class="top-nav-item" onclick="location.href='/recommendations'">
+                <i class="fas fa-lightbulb"></i>
+                <span>Recommendations</span>
+            </div>
+        </div>
+
+        <div class="user-profile">
+            <span>{{ username }}</span>
+        </div>
+    </header>
+    
+    <div class="container" id="mainContainer">
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-item" onclick="location.href='/home'">
+                <i class="fas fa-clinic-medical"></i> Dashboard
+            </div>
+            
+            <div class="sidebar-item" onclick="location.href='/disease-surveillance'">
+                <i class="fas fa-map-marked-alt"></i> Surveillance
+            </div>
+            
+            <div class="sidebar-item" onclick="location.href='/prediction-trends'">
+                <i class="fas fa-chart-line"></i> Prediction Trends
+            </div>
+            
+            <div class="sidebar-item" onclick="location.href='/reports-analytics'">
+                <i class="fas fa-chart-pie"></i> Reports & Analysis
+            </div>
+            
+            <div class="sidebar-item" onclick="location.href='/recommendations'">
+                <i class="fas fa-lightbulb"></i> Recommendations
+            </div> 
+
+            <div class="sidebar-footer">
+                <div class="logout-sidebar" onclick="showLogoutSpinner()">
+                    <i class="fas fa-lock"></i> Logout
+                </div>
+            </div>
+        </nav>
+        
+        <main class="main-content" id="mainContent">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+    
+    <script>
+        function toggleSubMenu(element) {
+            const allSubmenus = document.querySelectorAll('.submenu');
+            allSubmenus.forEach(submenu => {
+                if (submenu !== element.querySelector('.submenu')) {
+                    submenu.style.display = "none";
+                }
+            });
+
+            const submenu = element.querySelector('.submenu');
+            submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+        }
+
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.sidebar-item')) {
+                document.querySelectorAll('.submenu').forEach(submenu => {
+                    submenu.style.display = "none";
+                });
+            }
+        });
+
+        function showLogoutSpinner() {
+            const overlay = document.getElementById('logoutOverlay');
+            overlay.style.display = 'flex';
+            
+            setTimeout(() => {
+                window.location.href = '/logout';
+            }, 1500);
+        }
+
+        document.getElementById('toggleSidebar').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('mainContent');
+            const toggleBtn = document.getElementById('toggleSidebar');
+            
+            sidebar.classList.toggle('collapsed');
+            mainContent.classList.toggle('expanded');
+            
+            if (sidebar.classList.contains('collapsed')) {
+                toggleBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            } else {
+                toggleBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+    </script>
+</body>
+</html>
