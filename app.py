@@ -96,9 +96,13 @@ def register():
 # Getting available hospitals and occasions
 def get_hospitals_and_occurrences():
     hospitals = [
-        'Gweru Provincial Hospital',
-        'Midlands Private Hospital',
-        'Clay Bank Hospital'
+        "Harare Central Hospital",
+        "Parirenyatwa Group of Hospitals", 
+        "Chitungwiza Central Hospital",
+        "Mpilo Central Hospital",
+        "Mutare General Hospital",
+        "Gweru Provincial Hospital",
+        "Bulawayo Central Hospital"
     ]
     occasions = ['Newly detected', 'Review']
     return hospitals, occasions
@@ -183,17 +187,21 @@ def surveillance_map():
         else:
             risk_levels[row['Hospital_Name']] = 'High'
 
-    # coordinates for Gweru
-    gweru_location = (-19.4657, 29.8124)
+    # coordinates for Zimbabwe center (roughly between major cities)
+    zimbabwe_center = (-19.0154, 29.1549)
 
     
-    disease_map = folium.Map(location=gweru_location, zoom_start=13)
+    disease_map = folium.Map(location=zimbabwe_center, zoom_start=7)
 
     
     relevant_hospitals = {
-        "Clay Bank Hospital": {"latitude": -19.46271, "longitude": 29.8333},
+        "Harare Central Hospital": {"latitude": -17.8216, "longitude": 31.0492},
+        "Parirenyatwa Group of Hospitals": {"latitude": -17.7840, "longitude": 31.0456}, 
+        "Chitungwiza Central Hospital": {"latitude": -18.0130, "longitude": 31.0776},
+        "Mpilo Central Hospital": {"latitude": -20.1619, "longitude": 28.5906},
+        "Mutare General Hospital": {"latitude": -18.9707, "longitude": 32.6731},
         "Gweru Provincial Hospital": {"latitude": -19.4620, "longitude": 29.8301},
-        "Midlands Private Hospital": {"latitude": -19.4613615, "longitude": 29.8101575}
+        "Bulawayo Central Hospital": {"latitude": -20.1505, "longitude": 28.5665}
     }
 
    
@@ -352,9 +360,13 @@ def generate_pdf_response(dataframe, filename):
 
 
 hospitals = {
-    "Clay Bank Hospital": {"latitude":  -19.46271, "longitude":  29.8333},
+    "Harare Central Hospital": {"latitude": -17.8216, "longitude": 31.0492},
+    "Parirenyatwa Group of Hospitals": {"latitude": -17.7840, "longitude": 31.0456}, 
+    "Chitungwiza Central Hospital": {"latitude": -18.0130, "longitude": 31.0776},
+    "Mpilo Central Hospital": {"latitude": -20.1619, "longitude": 28.5906},
+    "Mutare General Hospital": {"latitude": -18.9707, "longitude": 32.6731},
     "Gweru Provincial Hospital": {"latitude": -19.4620, "longitude": 29.8301},
-    "Midlands Private Hospital": {"latitude": -19.4613615, "longitude":  29.8101575}
+    "Bulawayo Central Hospital": {"latitude": -20.1505, "longitude": 28.5665}
 }
 
 @app.route('/disease-surveillance', methods=['GET', 'POST'])
@@ -413,10 +425,15 @@ def disease_surveillance():
         location = hospitals[selected_hospital]
         disease_map = folium.Map(location=[location['latitude'], location['longitude']], zoom_start=12)
         
+        # Get case count for selected hospital safely
+        hospital_cases = total_cases_by_hospital.loc[total_cases_by_hospital['Hospital_Name'] == selected_hospital, 'Case_Count']
+        case_count = hospital_cases.iloc[0] if not hospital_cases.empty else 0
+        hospital_risk = risk_levels.get(selected_hospital, 'Low')
+        
         folium.Marker(
             location=[location['latitude'], location['longitude']],
-            popup=f"{selected_hospital}: {total_cases_by_hospital['Case_Count'].values[0]} cases (Risk: {risk_levels[selected_hospital]})",
-            icon=folium.Icon(color='blue' if risk_levels[selected_hospital] == 'Low' else 'orange' if risk_levels[selected_hospital] == 'Medium' else 'red')
+            popup=f"{selected_hospital}: {case_count} cases (Risk: {hospital_risk})",
+            icon=folium.Icon(color='blue' if hospital_risk == 'Low' else 'orange' if hospital_risk == 'Medium' else 'red')
         ).add_to(disease_map)
     else:
         initial_hospital = list(hospitals.values())[0]
