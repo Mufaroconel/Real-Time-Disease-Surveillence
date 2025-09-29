@@ -25,13 +25,10 @@ DISEASES = [
 ]
 
 HOSPITALS = [
-    "Harare Central Hospital",
-    "Parirenyatwa Group of Hospitals", 
-    "Chitungwiza Central Hospital",
-    "Mpilo Central Hospital",
-    "Mutare General Hospital",
-    "Gweru Provincial Hospital",
-    "Bulawayo Central Hospital"
+    "Belvedere Satellite Clinic",
+    "Kuwadzana PolyClinic", 
+    "Marlborough Satellite Clinic",
+    "Warren Park PolyClinic"
 ]
 
 OCCASIONS = ["Newly detected", "Review"]

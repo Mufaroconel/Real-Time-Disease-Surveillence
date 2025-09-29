@@ -96,13 +96,10 @@ def register():
 # Getting available hospitals and occasions
 def get_hospitals_and_occurrences():
     hospitals = [
-        "Harare Central Hospital",
-        "Parirenyatwa Group of Hospitals", 
-        "Chitungwiza Central Hospital",
-        "Mpilo Central Hospital",
-        "Mutare General Hospital",
-        "Gweru Provincial Hospital",
-        "Bulawayo Central Hospital"
+        "Belvedere Satellite Clinic",
+        "Kuwadzana PolyClinic",
+        "Marlborough Satellite Clinic", 
+        "Warren Park PolyClinic"
     ]
     occasions = ['Newly detected', 'Review']
     return hospitals, occasions
@@ -187,21 +184,18 @@ def surveillance_map():
         else:
             risk_levels[row['Hospital_Name']] = 'High'
 
-    # coordinates for Zimbabwe center (roughly between major cities)
-    zimbabwe_center = (-19.0154, 29.1549)
+    # coordinates for Harare city center
+    harare_center = (-17.8292, 31.0522)
 
     
-    disease_map = folium.Map(location=zimbabwe_center, zoom_start=7)
+    disease_map = folium.Map(location=harare_center, zoom_start=12)
 
     
     relevant_hospitals = {
-        "Harare Central Hospital": {"latitude": -17.8216, "longitude": 31.0492},
-        "Parirenyatwa Group of Hospitals": {"latitude": -17.7840, "longitude": 31.0456}, 
-        "Chitungwiza Central Hospital": {"latitude": -18.0130, "longitude": 31.0776},
-        "Mpilo Central Hospital": {"latitude": -20.1619, "longitude": 28.5906},
-        "Mutare General Hospital": {"latitude": -18.9707, "longitude": 32.6731},
-        "Gweru Provincial Hospital": {"latitude": -19.4620, "longitude": 29.8301},
-        "Bulawayo Central Hospital": {"latitude": -20.1505, "longitude": 28.5665}
+        "Belvedere Satellite Clinic": {"latitude": -17.8050, "longitude": 31.0617},
+        "Kuwadzana PolyClinic": {"latitude": -17.8420, "longitude": 30.9894},
+        "Marlborough Satellite Clinic": {"latitude": -17.8344, "longitude": 31.1056}, 
+        "Warren Park PolyClinic": {"latitude": -17.8611, "longitude": 30.9833}
     }
 
    
@@ -360,13 +354,10 @@ def generate_pdf_response(dataframe, filename):
 
 
 hospitals = {
-    "Harare Central Hospital": {"latitude": -17.8216, "longitude": 31.0492},
-    "Parirenyatwa Group of Hospitals": {"latitude": -17.7840, "longitude": 31.0456}, 
-    "Chitungwiza Central Hospital": {"latitude": -18.0130, "longitude": 31.0776},
-    "Mpilo Central Hospital": {"latitude": -20.1619, "longitude": 28.5906},
-    "Mutare General Hospital": {"latitude": -18.9707, "longitude": 32.6731},
-    "Gweru Provincial Hospital": {"latitude": -19.4620, "longitude": 29.8301},
-    "Bulawayo Central Hospital": {"latitude": -20.1505, "longitude": 28.5665}
+    "Belvedere Satellite Clinic": {"latitude": -17.8050, "longitude": 31.0617},
+    "Kuwadzana PolyClinic": {"latitude": -17.8420, "longitude": 30.9894},
+    "Marlborough Satellite Clinic": {"latitude": -17.8344, "longitude": 31.1056}, 
+    "Warren Park PolyClinic": {"latitude": -17.8611, "longitude": 30.9833}
 }
 
 @app.route('/disease-surveillance', methods=['GET', 'POST'])
